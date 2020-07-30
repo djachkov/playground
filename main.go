@@ -8,7 +8,7 @@ import (
 )
 
 func hello(w http.ResponseWriter, request *http.Request) {
-	tmpl := template.Must(template.ParseFiles("index.html"))
+	tmpl := template.Must(template.ParseFiles("static/html/index.html"))
 	tmpl.Execute(w, "")
 }
 func world(w http.ResponseWriter, request *http.Request) {
@@ -20,7 +20,7 @@ func world(w http.ResponseWriter, request *http.Request) {
 }
 func main() {
 
-	http.HandleFunc("/hello", hello)
-	http.HandleFunc("/world", world)
+	http.HandleFunc("/", hello)
+	http.HandleFunc("/admin", world)
 	http.ListenAndServe(":8090", nil)
 }
